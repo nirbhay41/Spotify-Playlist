@@ -1,0 +1,26 @@
+.leftpane{
+    flex: 0.3;
+    background-color: black;
+    color: white;
+    padding: 2rem;
+
+    header{
+        font-size: 2rem;
+    }
+
+    .featuredlist{
+        list-style: none;
+        padding-top: 10px;
+        line-height: 2;
+
+        .playlist{
+            display: flex;
+            align-items: center;
+            div{
+                font-size: 1.3rem;
+                cursor: pointer;
+                flex: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+.rightpane {
+    flex: 1;
+    background-color: #20d662;
+    color: black;
+    padding: 2rem;
+
+    header {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+
+        &>* {
+            margin-right: 10px;
+        }
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+
+        .userPlaylist {
+            list-style: none;
+            padding-top: 10px;
+            line-height: 2;
+
+            .playlist {
+                display: flex;
+                align-items: center;
+
+                li {
+                    font-size: 1.3rem;
+                    flex: 1;
+                }
+            }
+        }
+    }
+}
