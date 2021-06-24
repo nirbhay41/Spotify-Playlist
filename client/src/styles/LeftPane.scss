@@ -1,21 +1,28 @@
 .leftpane{
-    flex: 0.3;
+    // flex: 0.3;
+    width: 50%;
     background-color: black;
     color: white;
     padding: 2rem;
+    transition: .5s;
+    z-index: 10000;
+    position: relative;
+    overflow-x: hidden;
+    white-space: nowrap;
 
-    header{
+    & > p{
         font-size: 2rem;
     }
 
     .featuredlist{
         list-style: none;
         padding-top: 10px;
-        line-height: 2;
+        overflow: scroll;
 
         .playlist{
             display: flex;
             align-items: center;
+            margin: 15px 0;
             div{
                 font-size: 1.3rem;
                 cursor: pointer;

@@ -5,7 +5,7 @@ import { MinusCircleIcon, DocumentDownloadIcon, FolderOpenIcon } from '@heroicon
 import { saveAs } from 'file-saver';
 
 export default function RightPane() {
-    const { playlist, render, setRender,setPlaylist } = useContext(Context);
+    const { playlist, render, setRender, setPlaylist } = useContext(Context);
 
     const drop = (e: React.DragEvent<HTMLElement>) => {
         e.preventDefault();
@@ -36,11 +36,11 @@ export default function RightPane() {
 
     const openFile = () => {
         const fileSelector = document.createElement('input');
-        fileSelector.setAttribute('type','file');
-        fileSelector.setAttribute('accept','.json')
+        fileSelector.setAttribute('type', 'file');
+        fileSelector.setAttribute('accept', '.json')
         fileSelector.onchange = async (e: any) => {
             const file: File = e.target.files.item(0);
-            const newUserPlaylist:Item[] = JSON.parse(await file.text());
+            const newUserPlaylist: Item[] = JSON.parse(await file.text());
             setPlaylist(newUserPlaylist);
         }
         fileSelector.click();
@@ -50,10 +50,13 @@ export default function RightPane() {
         <div className="rightpane" onDragOver={e => dragOver(e)} onDrop={e => drop(e)}>
             <header>
                 <p>Users Locally Saved Playlists</p>
-                <FolderOpenIcon height={30} cursor="pointer" onClick={openFile} />
-                <DocumentDownloadIcon height={30} cursor="pointer" onClick={download} />
+                <div className="icons">
+                    <FolderOpenIcon height={30} cursor="pointer" onClick={openFile} />
+                    <DocumentDownloadIcon height={30} cursor="pointer" onClick={download} />
+                </div>
             </header>
             <main>
+                {playlist.length == 0 && <img src='/emptybg.png' className="emptybg" />}
                 <ul className="userPlaylist">
                     {playlist.map(e => (
                         <MenuItem key={e.id} playlist={e} />

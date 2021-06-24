@@ -9,8 +9,13 @@ const spotify = new SpotifyWebApi({
     clientId: '4ec27037f1434334b3b335e4271b2f2f'
 });
 
-export default function LeftPane({ accessToken }: { accessToken: string }) {
-    const [playlist, setPlaylist] = useState<Item[]>();
+type LeftPaneProps = { 
+    accessToken: string;
+    leftPaneRef: React.MutableRefObject<HTMLDivElement>;
+}
+
+export default function LeftPane({ accessToken,leftPaneRef }: LeftPaneProps) {
+    const [playlist, setPlaylist] = useState<Item[]>([]);
 
     useEffect(() => {
         if (accessToken)
@@ -30,9 +35,9 @@ export default function LeftPane({ accessToken }: { accessToken: string }) {
 
 
     return (
-        <div className="leftpane">
-            <header>Featured Playlists</header>
-            {playlist && <ul className="featuredlist">
+        <div className="leftpane" ref={leftPaneRef}>
+            <p>Featured Playlists</p>
+            {playlist.length > 0 && <ul className="featuredlist">
                 {
                     playlist.map(item => (
                         <MenuItem key={item.id} item={item} />
